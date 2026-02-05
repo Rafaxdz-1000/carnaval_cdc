@@ -1,12 +1,22 @@
 /**
  * Serviços para interagir com o Supabase
  */
-import { supabase, type Lead, type Analytics } from "./supabase";
+import { supabase, isSupabaseConfigured, getSupabaseConfigError, type Lead, type Analytics } from "./supabase";
 
 /**
  * Salva um novo lead no banco de dados
  */
 export async function salvarLead(dados: Omit<Lead, "id" | "created_at" | "updated_at">) {
+  if (!isSupabaseConfigured() || !supabase) {
+    const errorMsg = getSupabaseConfigError() || "Supabase não configurado";
+    console.error("Erro de configuração:", errorMsg);
+    return {
+      success: false,
+      error: `Configuração do Supabase: ${errorMsg}. Configure as variáveis de ambiente VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY no Vercel.`,
+      data: null,
+    };
+  }
+
   try {
     // Capturar informações do navegador
     const userAgent = navigator.userAgent;
@@ -39,6 +49,16 @@ export async function salvarLead(dados: Omit<Lead, "id" | "created_at" | "update
       user_agent: userAgent,
       source: "formulario",
     };
+
+    // Verificar se Supabase está configurado
+    if (!isSupabaseConfigured() || !supabase) {
+      const errorMsg = getSupabaseConfigError() || "Supabase não configurado";
+      return {
+        success: false,
+        error: `Configuração do Supabase: ${errorMsg}. Configure as variáveis de ambiente no Vercel.`,
+        data: null,
+      };
+    }
 
     // Inserir lead
     // Usar .rpc() ou garantir que estamos usando a role correta
@@ -95,18 +115,25 @@ export async function registrarAnalytics(
   metadata?: Record<string, any>
 ) {
   try {
-    // Enviar para Supabase
-    const { error } = await supabase.from("analytics").insert([
+    // Enviar para Supabase (apenas se configurado)
+    if (isSupabaseConfigured() && supabase) {
+      const { error } = await supabase.from("analytics").insert([
       {
         lead_id: leadId || null,
         event_type: eventType,
         page_section: pageSection || null,
         metadata: metadata || null,
       },
-    ]);
+      ]);
 
-    if (error) {
-      console.error("Erro ao registrar analytics:", error);
+      if (error) {
+        console.error("Erro ao registrar analytics:", error);
+      }
+    } else {
+      // Se Supabase não estiver configurado, apenas loga (não quebra)
+      if (import.meta.env.DEV) {
+        console.warn("Supabase não configurado, analytics não será salvo no banco");
+      }
     }
 
     // Enviar para Google Tag Manager
@@ -140,6 +167,10 @@ export async function registrarAnalytics(
  * Busca portes de empresa disponíveis
  */
 export async function buscarPortes() {
+  if (!isSupabaseConfigured() || !supabase) {
+    return { success: false, error: "Supabase não configurado", data: [] };
+  }
+
   try {
     const { data, error } = await supabase
       .from("company_portes")
@@ -158,6 +189,10 @@ export async function buscarPortes() {
  * Busca nichos disponíveis
  */
 export async function buscarNichos() {
+  if (!isSupabaseConfigured() || !supabase) {
+    return { success: false, error: "Supabase não configurado", data: [] };
+  }
+
   try {
     const { data, error } = await supabase
       .from("company_niches")
@@ -180,6 +215,15 @@ export async function salvarRespostasQuestionario(
   leadId: string,
   answers: Record<number, string>
 ) {
+  if (!isSupabaseConfigured() || !supabase) {
+    const errorMsg = getSupabaseConfigError() || "Supabase não configurado";
+    return {
+      success: false,
+      error: `Configuração do Supabase: ${errorMsg}. Configure as variáveis de ambiente no Vercel.`,
+      data: null,
+    };
+  }
+
   try {
     // Preparar dados das respostas
     const responseData = {

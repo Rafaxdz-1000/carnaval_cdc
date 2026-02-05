@@ -6,17 +6,31 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error(
-    "Variáveis de ambiente do Supabase não configuradas. Verifique VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY no arquivo .env"
-  );
-}
+// Criar cliente Supabase mesmo sem variáveis (para não quebrar a aplicação)
+// As funções que usam o Supabase devem verificar se está configurado
+export const supabase = supabaseUrl && supabaseAnonKey
+  ? createClient(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        persistSession: false,
+      },
+    })
+  : null;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: false,
-  },
-});
+// Função helper para verificar se Supabase está configurado
+export const isSupabaseConfigured = () => {
+  return !!(supabaseUrl && supabaseAnonKey);
+};
+
+// Função helper para obter mensagem de erro de configuração
+export const getSupabaseConfigError = () => {
+  if (!supabaseUrl) {
+    return "VITE_SUPABASE_URL não configurada";
+  }
+  if (!supabaseAnonKey) {
+    return "VITE_SUPABASE_ANON_KEY não configurada";
+  }
+  return null;
+};
 
 // Tipos TypeScript para as tabelas
 export interface Lead {

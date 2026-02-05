@@ -7,6 +7,7 @@ import { BenefitsSection } from "@/components/BenefitsSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { registrarAnalytics } from "@/lib/supabaseService";
+import { sendGTMEvent } from "@/lib/gtmAnalytics";
 
 const Index = () => {
   // Registrar visualização da página
