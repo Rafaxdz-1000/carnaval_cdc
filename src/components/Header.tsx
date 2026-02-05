@@ -1,5 +1,5 @@
 import { Sparkles } from "lucide-react";
-import logoImage from "@/assets/logo.png";
+import logoImage from "@/assets/Logo.png";
 
 export const Header = () => {
   const scrollToBottom = () => {
