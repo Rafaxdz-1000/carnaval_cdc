@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "url": "https://mcp.supabase.com/mcp",
+      "env": {
+        "SUPABASE_URL": "https://seu-projeto-id.supabase.co",
+        "SUPABASE_ANON_KEY": "sua-api-key-anon-public-aqui"
+      }
+    }
+  }
+}

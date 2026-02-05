@@ -1,0 +1,63 @@
+/**
+ * Cliente Supabase configurado para o projeto
+ */
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error(
+    "Variáveis de ambiente do Supabase não configuradas. Verifique VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY no arquivo .env"
+  );
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: false,
+  },
+});
+
+// Tipos TypeScript para as tabelas
+export interface Lead {
+  id?: string;
+  nome: string;
+  email: string;
+  celular: string;
+  instagram?: string | null;
+  facebook?: string | null;
+  empresa?: string | null;
+  porte_empresa?: string | null;
+  nicho_empresa?: string | null;
+  sem_empresa: boolean;
+  oferece_servico?: boolean | null;
+  tipo_servico?: string | null;
+  status?: string;
+  ip_address?: string | null;
+  user_agent?: string | null;
+  source?: string | null;
+  utm_source?: string | null;
+  utm_medium?: string | null;
+  utm_campaign?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+
+export interface Analytics {
+  id?: string;
+  lead_id?: string | null;
+  event_type:
+    | "page_view"
+    | "form_open"
+    | "form_submit"
+    | "form_error"
+    | "questionnaire_start"
+    | "questionnaire_progress"
+    | "questionnaire_complete"
+    | "button_click"
+    | "scroll_depth";
+  page_section?: string | null;
+  timestamp?: string;
+  metadata?: Record<string, any> | null;
+}
