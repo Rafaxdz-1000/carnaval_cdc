@@ -62,17 +62,31 @@ export async function salvarLead(dados: Omit<Lead, "id" | "created_at" | "update
 
     // Inserir lead
     // Garantir que estamos usando o cliente correto
+    if (import.meta.env.DEV) {
+      console.log("📝 Tentando inserir lead:", leadData);
+      console.log("🔗 Supabase URL:", supabaseUrl);
+      console.log("✅ Supabase configurado:", isSupabaseConfigured());
+      console.log("🔑 Supabase client:", supabase ? "Criado" : "NULL");
+    }
+    
     const { data, error } = await supabase
       .from("leads")
       .insert([leadData])
       .select()
       .single();
     
-    // Log adicional para debug
-    if (import.meta.env.DEV) {
-      console.log("Tentando inserir lead:", leadData);
-      console.log("Supabase URL:", supabaseUrl);
-      console.log("Supabase configurado:", isSupabaseConfigured());
+    // Log detalhado do erro
+    if (error) {
+      console.error("❌ Erro ao inserir lead:", {
+        message: error.message,
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+        // Verificar se é erro de RLS
+        isRLSError: error.code === '42501' || error.message.includes('row-level security'),
+      });
+    } else {
+      console.log("✅ Lead inserido com sucesso:", data);
     }
     
     // Log para debug

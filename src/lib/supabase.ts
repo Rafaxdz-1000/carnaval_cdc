@@ -12,9 +12,27 @@ export const supabase = supabaseUrl && supabaseAnonKey
   ? createClient(supabaseUrl, supabaseAnonKey, {
       auth: {
         persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false,
+      },
+      db: {
+        schema: 'public',
+      },
+      global: {
+        headers: {
+          'apikey': supabaseAnonKey,
+        },
       },
     })
   : null;
+
+// Log para debug (apenas em desenvolvimento)
+if (import.meta.env.DEV && supabase) {
+  console.log('🔧 Supabase Client Configurado:');
+  console.log('  URL:', supabaseUrl);
+  console.log('  Key (primeiros 20 chars):', supabaseAnonKey?.substring(0, 20) + '...');
+  console.log('  Key type:', supabaseAnonKey?.startsWith('sb_publishable_') ? 'publishable' : supabaseAnonKey?.startsWith('eyJ') ? 'legacy anon' : 'unknown');
+}
 
 // Função helper para verificar se Supabase está configurado
 export const isSupabaseConfigured = () => {
