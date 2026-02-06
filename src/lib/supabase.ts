@@ -21,6 +21,7 @@ export const supabase = supabaseUrl && supabaseAnonKey
       global: {
         headers: {
           'apikey': supabaseAnonKey,
+          'Authorization': `Bearer ${supabaseAnonKey}`,
         },
       },
     })
