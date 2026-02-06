@@ -15,15 +15,6 @@ export const supabase = supabaseUrl && supabaseAnonKey
         autoRefreshToken: false,
         detectSessionInUrl: false,
       },
-      db: {
-        schema: 'public',
-      },
-      global: {
-        headers: {
-          'apikey': supabaseAnonKey,
-          'Authorization': `Bearer ${supabaseAnonKey}`,
-        },
-      },
     })
   : null;
 
