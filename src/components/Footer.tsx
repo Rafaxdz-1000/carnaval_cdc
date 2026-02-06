@@ -36,13 +36,20 @@ export const Footer = () => {
 
           {/* Links */}
           <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm order-2 md:order-3">
-            <a href="#" className="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap">
-              Privacidade
+            <a 
+              href="https://clubedoscisnes.com/services" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap"
+            >
+              Sobre Nós
             </a>
-            <a href="#" className="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap">
-              Termos
-            </a>
-            <a href="#" className="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap">
+            <a 
+              href="https://clubedoscisnes.com/services" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap"
+            >
               Contato
             </a>
           </div>
