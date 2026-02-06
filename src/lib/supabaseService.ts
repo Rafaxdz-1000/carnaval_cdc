@@ -61,12 +61,19 @@ export async function salvarLead(dados: Omit<Lead, "id" | "created_at" | "update
     }
 
     // Inserir lead
-    // Usar .rpc() ou garantir que estamos usando a role correta
+    // Garantir que estamos usando o cliente correto
     const { data, error } = await supabase
       .from("leads")
       .insert([leadData])
       .select()
       .single();
+    
+    // Log adicional para debug
+    if (import.meta.env.DEV) {
+      console.log("Tentando inserir lead:", leadData);
+      console.log("Supabase URL:", supabaseUrl);
+      console.log("Supabase configurado:", isSupabaseConfigured());
+    }
     
     // Log para debug
     if (error) {
