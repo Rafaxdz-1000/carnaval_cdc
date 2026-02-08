@@ -60,61 +60,86 @@ export async function salvarLead(dados: Omit<Lead, "id" | "created_at" | "update
       };
     }
 
-    // Inserir lead
-    // Garantir que estamos usando o cliente correto
+    // Inserir lead APENAS via função RPC (bypassa RLS - evita erro 401/42501)
     if (import.meta.env.DEV) {
-      console.log("📝 Tentando inserir lead:", leadData);
-      console.log("🔗 Supabase URL:", supabaseUrl);
-      console.log("✅ Supabase configurado:", isSupabaseConfigured());
-      console.log("🔑 Supabase client:", supabase ? "Criado" : "NULL");
-    }
-    
-    const { data, error } = await supabase
-      .from("leads")
-      .insert([leadData])
-      .select()
-      .single();
-    
-    // Log detalhado do erro
-    if (error) {
-      console.error("❌ Erro ao inserir lead:", {
-        message: error.message,
-        code: error.code,
-        details: error.details,
-        hint: error.hint,
-        // Verificar se é erro de RLS
-        isRLSError: error.code === '42501' || error.message.includes('row-level security'),
-      });
-    } else {
-      console.log("✅ Lead inserido com sucesso:", data);
-    }
-    
-    // Log para debug
-    if (error) {
-      console.error("Erro detalhado ao inserir lead:", {
-        message: error.message,
-        code: error.code,
-        details: error.details,
-        hint: error.hint,
-      });
+      console.log("📝 Inserindo lead via RPC insert_lead");
     }
 
-    if (error) {
-      // Se o erro for de email duplicado, retornar informação útil
-      if (error.code === "23505") {
+    const { data: rpcData, error: rpcError } = await supabase.rpc('insert_lead', {
+      p_nome: leadData.nome,
+      p_email: leadData.email,
+      p_celular: leadData.celular,
+      p_instagram: leadData.instagram ?? null,
+      p_facebook: leadData.facebook ?? null,
+      p_empresa: leadData.empresa ?? null,
+      p_porte_empresa: leadData.porte_empresa ?? null,
+      p_nicho_empresa: leadData.nicho_empresa ?? null,
+      p_sem_empresa: leadData.sem_empresa,
+      p_oferece_servico: leadData.oferece_servico ?? null,
+      p_tipo_servico: leadData.tipo_servico ?? null,
+      p_status: leadData.status ?? 'pendente',
+      p_ip_address: leadData.ip_address ?? null,
+      p_user_agent: leadData.user_agent ?? null,
+      p_source: leadData.source ?? null,
+      p_utm_source: leadData.utm_source ?? null,
+      p_utm_medium: leadData.utm_medium ?? null,
+      p_utm_campaign: leadData.utm_campaign ?? null,
+    });
+
+    if (rpcError) {
+      console.error("❌ Erro RPC insert_lead:", rpcError.message, rpcError.code);
+      if (rpcError.code === "23505") {
         return {
           success: false,
           error: "Este email já está cadastrado. Verifique sua caixa de entrada!",
-          duplicate: true,
+          data: null,
         };
       }
-      throw error;
+      return {
+        success: false,
+        error: rpcError.message || "Erro ao salvar. Tente novamente.",
+        data: null,
+      };
     }
 
+    const row = Array.isArray(rpcData) && rpcData.length > 0
+      ? rpcData[0]
+      : rpcData && typeof rpcData === "object" && "id" in rpcData
+        ? rpcData
+        : null;
+
+    if (row && row.id) {
+      return {
+        success: true,
+        data: { id: row.id, nome: row.nome, email: row.email, celular: row.celular, created_at: row.created_at },
+      };
+    }
+
+    console.warn("RPC sem id, tentando INSERT direto (RLS desabilitado)");
+    const { data: insertData, error: insertError } = await supabase
+      .from("leads")
+      .insert([leadData])
+      .select("id, nome, email, celular, created_at")
+      .single();
+
+    if (insertError) {
+      if (insertError.code === "23505") {
+        return { success: false, error: "Este email já está cadastrado. Verifique sua caixa de entrada!", data: null };
+      }
+      return {
+        success: false,
+        error: insertError.message || "Erro ao salvar. Tente novamente.",
+        data: null,
+      };
+    }
+    if (insertData?.id) {
+      return { success: true, data: insertData };
+    }
 
     return {
-      success: true,
-      data,
+      success: false,
+      error: "Resposta inválida do servidor. Tente novamente.",
+      data: null,
     };
   } catch (error: any) {
     console.error("Erro ao salvar lead:", error);

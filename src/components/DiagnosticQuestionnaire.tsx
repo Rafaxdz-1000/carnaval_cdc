@@ -224,9 +224,6 @@ export const DiagnosticQuestionnaire = () => {
               <p className="text-muted-foreground text-lg mb-6">
                 Obrigado por responder todas as perguntas. Nossa equipe está analisando suas respostas e você receberá seu diagnóstico completo em até 3 dias úteis no email informado.
               </p>
-              <p className="text-sm text-muted-foreground">
-                Redirecionando...
-              </p>
             </div>
           </CardContent>
         </Card>
