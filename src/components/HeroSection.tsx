@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { LeadFormModal } from "./LeadFormModal";
 import { registrarAnalytics } from "@/lib/supabaseService";
 import { trackButtonClick } from "@/lib/gtmAnalytics";
-import heroImage from "@/assets/hero-carnival.jpg";
+const heroImage = "/tech-tecnologias-2022-23dez22-GettyImages.jpg";
 
 export const HeroSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
