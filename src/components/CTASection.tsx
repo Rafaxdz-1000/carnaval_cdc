@@ -10,7 +10,7 @@ export const CTASection = () => {
 
   const handleOpenModal = () => {
     registrarAnalytics("form_open", "cta");
-    trackButtonClick("cta", "QUERO MEU DIAGNÓSTICO + SITE GRÁTIS!");
+    trackButtonClick("cta", "QUERO MEU DIAGNÓSTICO GRÁTIS!");
     setIsModalOpen(true);
   };
 
@@ -34,21 +34,21 @@ export const CTASection = () => {
             </div>
 
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Não Fique Para Trás no{" "}
+              Não fique para trás da{" "}
               <span className="underline decoration-4 decoration-secondary">
-                Bloco da Concorrência!
+                concorrência!
               </span>
             </h2>
 
             <p className="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Descubra se seu negócio está preparado para o Carnaval com nosso diagnóstico digital gratuito 
-              e ainda ganhe um <strong>site grátis em até 3 dias</strong> — tudo para você aproveitar a temporada mais lucrativa do ano!
+              Descubra se seu negócio está preparado para crescer com nosso diagnóstico digital gratuito. 
+              Resultado em até 3 dias — prazo para envio até 01 de junho de 2026.
             </p>
 
             {/* Features */}
             <div className="flex flex-wrap justify-center gap-4 mb-10">
               <FeatureTag icon={<Gift className="w-4 h-4" />} text="100% Gratuito" />
-              <FeatureTag icon={<Clock className="w-4 h-4" />} text="Site em 3 Dias" />
+              <FeatureTag icon={<Clock className="w-4 h-4" />} text="Resultado em 3 Dias" />
               <FeatureTag icon={<Shield className="w-4 h-4" />} text="Diagnóstico Completo" />
             </div>
 
@@ -59,7 +59,7 @@ export const CTASection = () => {
               className="bg-primary-foreground text-primary font-bold text-base sm:text-lg px-6 sm:px-12 py-5 sm:py-7 rounded-xl hover:scale-105 transition-all shadow-2xl group w-full sm:w-auto"
             >
               <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
-              QUERO MEU DIAGNÓSTICO + SITE GRÁTIS!
+              QUERO MEU DIAGNÓSTICO GRÁTIS!
               <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
 

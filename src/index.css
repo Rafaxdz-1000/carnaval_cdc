@@ -4,119 +4,121 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Carnaval Brazilian Theme - Vibrant & Festive */
+/* Paleta Clube dos Cisnes - Azuis e teal do logo (origami cisne) */
 
 @layer base {
   :root {
-    --background: 280 60% 98%;
-    --foreground: 280 80% 10%;
+    /* Base: fundos claros e texto - sensação limpa e profissional */
+    --background: 200 25% 98%;
+    --foreground: 210 35% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 280 80% 10%;
+    --card-foreground: 210 35% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 280 80% 10%;
+    --popover-foreground: 210 35% 12%;
 
-    --primary: 280 85% 50%;
+    /* Primary: azul médio/royal do corpo do cisne (#2A9FD8) */
+    --primary: 201 70% 51%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 45 100% 50%;
-    --secondary-foreground: 280 80% 10%;
+    /* Secondary: azul mais claro/cyan do gradiente (#5BC0DE) */
+    --secondary: 197 64% 61%;
+    --secondary-foreground: 210 35% 12%;
 
-    --muted: 280 20% 90%;
-    --muted-foreground: 280 30% 40%;
+    --muted: 200 20% 92%;
+    --muted-foreground: 210 25% 40%;
 
-    --accent: 330 90% 55%;
+    /* Accent: teal/turquesa do bico e detalhes do logo */
+    --accent: 174 65% 48%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 280 30% 85%;
-    --input: 280 30% 85%;
-    --ring: 280 85% 50%;
+    --border: 200 25% 88%;
+    --input: 200 25% 88%;
+    --ring: 201 70% 51%;
 
     --radius: 0.75rem;
 
-    /* Carnival specific colors */
-    --carnival-purple: 280 85% 50%;
-    --carnival-gold: 45 100% 50%;
-    --carnival-pink: 330 90% 55%;
-    --carnival-green: 145 70% 45%;
-    --carnival-blue: 200 90% 50%;
-    --carnival-orange: 25 100% 55%;
+    /* Cores da marca - Clube dos Cisnes */
+    --brand-blue: 201 70% 51%;        /* Azul principal #2A9FD8 */
+    --brand-blue-light: 197 64% 61%;  /* Azul claro/cyan #5BC0DE */
+    --brand-teal: 174 65% 48%;        /* Teal/turquesa */
+    --brand-blue-dark: 210 55% 38%;   /* Azul mais escuro (dobras do origami) */
 
-    /* Gradients */
-    --gradient-carnival: linear-gradient(135deg, hsl(280 85% 50%), hsl(330 90% 55%), hsl(45 100% 50%));
-    --gradient-hero: linear-gradient(180deg, hsl(280 85% 50% / 0.1) 0%, hsl(330 90% 55% / 0.1) 50%, hsl(45 100% 50% / 0.1) 100%);
-    --gradient-cta: linear-gradient(135deg, hsl(280 85% 45%), hsl(330 90% 50%));
+    /* Gradientes no estilo do logo: azul claro → azul mais intenso, com toque de teal */
+    --gradient-carnival: linear-gradient(135deg, hsl(197 64% 61%), hsl(201 70% 51%), hsl(174 65% 48%));
+    --gradient-hero: linear-gradient(180deg, hsl(197 64% 61% / 0.12) 0%, hsl(201 70% 51% / 0.08) 50%, hsl(174 65% 48% / 0.1) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(201 70% 51%), hsl(174 65% 48%));
 
-    /* Shadows */
-    --shadow-carnival: 0 10px 40px -10px hsl(280 85% 50% / 0.4);
-    --shadow-glow: 0 0 60px hsl(330 90% 55% / 0.3);
+    /* Sombras em tons de azul */
+    --shadow-carnival: 0 10px 40px -10px hsl(201 70% 51% / 0.35);
+    --shadow-glow: 0 0 60px hsl(197 64% 61% / 0.25);
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 280 80% 10%;
-    --sidebar-primary: 280 85% 50%;
+    --sidebar-foreground: 210 35% 12%;
+    --sidebar-primary: 201 70% 51%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 330 90% 55%;
+    --sidebar-accent: 174 65% 48%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 280 30% 85%;
-    --sidebar-ring: 280 85% 50%;
+    --sidebar-border: 200 25% 88%;
+    --sidebar-ring: 201 70% 51%;
 
-    --chart-1: 280 85% 50%;
-    --chart-2: 330 90% 55%;
-    --chart-3: 45 100% 50%;
-    --chart-4: 145 70% 45%;
-    --chart-5: 200 90% 50%;
+    --chart-1: 201 70% 51%;
+    --chart-2: 197 64% 61%;
+    --chart-3: 174 65% 48%;
+    --chart-4: 210 55% 38%;
+    --chart-5: 200 50% 55%;
 
     --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
     --font-display: 'Fraunces', ui-serif, Georgia, serif;
   }
 
   .dark {
-    --background: 280 50% 8%;
-    --foreground: 280 20% 95%;
+    --background: 210 35% 8%;
+    --foreground: 200 20% 95%;
 
-    --card: 280 40% 12%;
-    --card-foreground: 280 20% 95%;
+    --card: 210 30% 12%;
+    --card-foreground: 200 20% 95%;
 
-    --popover: 280 40% 12%;
-    --popover-foreground: 280 20% 95%;
+    --popover: 210 30% 12%;
+    --popover-foreground: 200 20% 95%;
 
-    --primary: 280 85% 60%;
-    --primary-foreground: 280 80% 10%;
+    --primary: 197 64% 55%;
+    --primary-foreground: 210 35% 10%;
 
-    --secondary: 45 100% 55%;
-    --secondary-foreground: 280 80% 10%;
+    --secondary: 201 70% 55%;
+    --secondary-foreground: 210 35% 10%;
 
-    --muted: 280 30% 20%;
-    --muted-foreground: 280 20% 70%;
+    --muted: 210 25% 18%;
+    --muted-foreground: 200 20% 70%;
 
-    --accent: 330 90% 60%;
+    --accent: 174 65% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 280 30% 25%;
-    --input: 280 30% 25%;
-    --ring: 280 85% 60%;
+    --border: 210 25% 22%;
+    --input: 210 25% 22%;
+    --ring: 197 64% 55%;
 
-    --sidebar-background: 280 40% 10%;
-    --sidebar-foreground: 280 20% 95%;
-    --sidebar-primary: 280 85% 60%;
-    --sidebar-primary-foreground: 280 80% 10%;
-    --sidebar-accent: 330 90% 60%;
+    --sidebar-background: 210 35% 10%;
+    --sidebar-foreground: 200 20% 95%;
+    --sidebar-primary: 197 64% 55%;
+    --sidebar-primary-foreground: 210 35% 10%;
+    --sidebar-accent: 174 65% 52%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 280 30% 25%;
-    --sidebar-ring: 280 85% 60%;
+    --sidebar-border: 210 25% 22%;
+    --sidebar-ring: 197 64% 55%;
 
-    --chart-1: 280 85% 60%;
-    --chart-2: 330 90% 60%;
-    --chart-3: 45 100% 55%;
-    --chart-4: 145 70% 50%;
-    --chart-5: 200 90% 55%;
+    --chart-1: 197 64% 55%;
+    --chart-2: 201 70% 55%;
+    --chart-3: 174 65% 52%;
+    --chart-4: 210 55% 45%;
+    --chart-5: 200 50% 60%;
   }
 }
 
@@ -190,8 +192,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(330 90% 55% / 0.5); }
-  50% { box-shadow: 0 0 40px hsl(330 90% 55% / 0.8), 0 0 60px hsl(280 85% 50% / 0.4); }
+  0%, 100% { box-shadow: 0 0 20px hsl(201 70% 51% / 0.4); }
+  50% { box-shadow: 0 0 40px hsl(197 64% 61% / 0.5), 0 0 60px hsl(174 65% 48% / 0.3); }
 }
 
 @keyframes shake {

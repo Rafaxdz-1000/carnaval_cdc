@@ -11,7 +11,7 @@ export const HeroSection = () => {
 
   const handleOpenModal = () => {
     registrarAnalytics("form_open", "hero");
-    trackButtonClick("hero", "QUERO MEU DIAGNÓSTICO + SITE GRÁTIS");
+    trackButtonClick("hero", "QUERO MEU DIAGNÓSTICO GRÁTIS");
     setIsModalOpen(true);
   };
 
@@ -42,15 +42,13 @@ export const HeroSection = () => {
               Descubra se seu negócio está{" "}
               <span className="text-gradient">preparado</span>
               <br />
-              para o{" "}
-              <span className="text-primary">Carnaval</span>!
+              para <span className="text-primary">crescer</span>!
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              Faça nosso diagnóstico digital gratuito e ainda ganhe um{" "}
-              <strong className="text-foreground">site grátis em até 3 dias</strong> — 
-              tudo para você aproveitar a temporada mais lucrativa do ano!
+              Faça nosso diagnóstico digital gratuito e receba sua análise em até 3 dias —
+              tudo para você alavancar suas vendas!
             </p>
 
             {/* CTA Buttons */}
@@ -61,7 +59,7 @@ export const HeroSection = () => {
                 className="gradient-cta text-primary-foreground font-bold text-lg px-8 py-6 rounded-xl hover:scale-105 transition-all shadow-carnival animate-pulse-glow group"
               >
                 <Sparkles className="w-5 h-5 mr-2" />
-                QUERO MEU DIAGNÓSTICO + SITE GRÁTIS
+                QUERO MEU DIAGNÓSTICO GRÁTIS
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               

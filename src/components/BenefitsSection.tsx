@@ -24,7 +24,7 @@ const benefits = [
   {
     icon: <TrendingUp className="w-8 h-8" />,
     title: "Score de Maturidade Digital",
-    description: "Entenda como o mercado enxerga sua empresa hoje versus seus concorrentes. Descubra o passo mais rápido (Tráfego ou Site) para inverter o jogo e sair da invisibilidade digital.",
+    description: "Entenda como o mercado enxerga sua empresa hoje versus seus concorrentes. Descubra o passo mais rápido (Tráfego ou Presença Digital) para inverter o jogo e sair da invisibilidade digital.",
     color: "accent",
     features: ["Análise Competitiva", "Posicionamento Digital", "Estratégia de Visibilidade"],
   },
@@ -48,7 +48,7 @@ export const BenefitsSection = () => {
 
   const handleOpenModal = () => {
     registrarAnalytics("form_open", "benefits");
-    trackButtonClick("benefits", "QUERO MEU DIAGNÓSTICO + SITE GRÁTIS!");
+    trackButtonClick("benefits", "QUERO MEU DIAGNÓSTICO GRÁTIS!");
     setIsModalOpen(true);
   };
 
@@ -67,7 +67,7 @@ export const BenefitsSection = () => {
               <span className="text-gradient">Diagnóstico Digital</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Análise completa do seu negócio + site grátis em até 3 dias para você aproveitar o Carnaval
+              Análise completa do seu negócio em até 3 dias para você alavancar suas vendas
             </p>
           </div>
 
@@ -111,7 +111,7 @@ export const BenefitsSection = () => {
               
               <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Dúvidas sobre seu{" "}
-                <span className="text-gradient">Diagnóstico e Site</span>?
+                <span className="text-gradient">Diagnóstico</span>?
               </h3>
             </div>
 
@@ -121,28 +121,8 @@ export const BenefitsSection = () => {
                   O que exatamente eu vou receber no meu e-mail em até 3 dias?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
-                  <p className="mb-3">Você receberá duas coisas:</p>
-                  <ul className="list-disc list-inside space-y-2 ml-2">
-                    <li>
-                      <strong className="text-foreground">Seu Relatório de Maturidade Digital</strong> com a análise do gargalo da sua empresa e o plano de ação sugerido.
-                    </li>
-                    <li>
-                      <strong className="text-foreground">Uma Versão Demonstrativa do seu Site</strong>, já criada e publicada em um link temporário, com as informações básicas que você nos passou no formulário. É uma "prova real" de como sua empresa pode se posicionar na internet.
-                    </li>
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-2" className="bg-background border border-border rounded-xl px-6">
-                <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-4">
-                  Esse site que vou receber já é o meu site oficial e definitivo?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
-                  <p className="mb-3">
-                    Ele é um <strong className="text-foreground">modelo funcional (MVP)</strong> para você visualizar o potencial do seu negócio online. Ele virá com um endereço temporário e com os textos/dados que captamos no diagnóstico.
-                  </p>
                   <p>
-                    Para conectar um endereço próprio, hospedá-lo definitivamente ou fazer personalizações avançadas de design e funcionalidades, isso é um serviço à parte contratado através do Clube dos Cisnes.
+                    Você receberá seu <strong className="text-foreground">Relatório de Maturidade Digital</strong> com a análise do gargalo da sua empresa e o plano de ação sugerido para alavancar suas vendas.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -153,7 +133,7 @@ export const BenefitsSection = () => {
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
                   <p>
-                    Diferente de testes automáticos, este diagnóstico é <strong className="text-foreground">analisado pessoalmente pela nossa equipe</strong>. Além disso, nós usamos esse tempo para construir manualmente a primeira versão do seu site e desenhar um plano que faça sentido para a sua realidade. Preferimos gastar um tempo estudando seu caso para lhe entregar algo concreto e visual do que apenas uma resposta automática.
+                    Diferente de testes automáticos, este diagnóstico é <strong className="text-foreground">analisado pessoalmente pela nossa equipe</strong>. Usamos esse tempo para estudar seu caso e desenhar um plano que faça sentido para a sua realidade, entregando algo concreto em vez de apenas uma resposta automática.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -164,7 +144,7 @@ export const BenefitsSection = () => {
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
                   <p className="mb-3">
-                    <strong className="text-foreground">Sim, foi feito exatamente para você.</strong> O objetivo do diagnóstico e do site demonstrativo é mostrar como ferramentas de IA e Web simplificam sua vida.
+                    <strong className="text-foreground">Sim, foi feito exatamente para você.</strong> O objetivo do diagnóstico é mostrar como ferramentas de IA e digital podem simplificar sua vida.
                   </p>
                   <p>
                     Se a solução final envolver aplicativos ou automações complexas, toda a parte técnica fica com o Clube dos Cisnes; você só precisa focar em atender seus clientes e vender.
@@ -174,14 +154,14 @@ export const BenefitsSection = () => {
 
               <AccordionItem value="item-5" className="bg-background border border-border rounded-xl px-6">
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-4">
-                  Sou obrigado a contratar o Clube dos Cisnes após ver o site?
+                  Sou obrigado a contratar o Clube dos Cisnes após receber o diagnóstico?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
                   <p className="mb-3">
-                    <strong className="text-foreground">De forma alguma.</strong> O diagnóstico e o site demonstrativo são ferramentas de consultoria para lhe dar clareza. O site ficará no ar por tempo limitado para sua visualização.
+                    <strong className="text-foreground">De forma alguma.</strong> O diagnóstico é uma ferramenta de consultoria para lhe dar clareza sobre o seu negócio.
                   </p>
                   <p>
-                    Se você gostar do que viu e quiser oficializar esse projeto, expandir para um aplicativo ou rodar tráfego pago, ficaremos felizes em apresentar uma proposta comercial para tornar isso definitivo.
+                    Se você gostar do resultado e quiser dar continuidade — expandir para um aplicativo, site ou tráfego pago — ficaremos felizes em apresentar uma proposta comercial.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -195,7 +175,7 @@ export const BenefitsSection = () => {
               size="lg"
               className="gradient-cta text-primary-foreground font-bold text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-6 rounded-xl hover:scale-105 transition-all shadow-carnival group w-full sm:w-auto"
             >
-              QUERO MEU DIAGNÓSTICO + SITE GRÁTIS!
+              QUERO MEU DIAGNÓSTICO GRÁTIS!
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>

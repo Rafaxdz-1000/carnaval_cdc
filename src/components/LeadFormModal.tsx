@@ -179,7 +179,7 @@ export const LeadFormModal = ({ open, onOpenChange }: LeadFormModalProps) => {
             </p>
             <div className="bg-muted/50 rounded-lg p-4 mb-4 w-full">
               <p className="text-sm text-muted-foreground text-center">
-                Nossa equipe entrará em contato em breve para realizar seu diagnóstico digital e iniciar a criação do seu site grátis!
+                Nossa equipe entrará em contato em breve para realizar seu diagnóstico digital!
               </p>
             </div>
             <p className="text-sm text-muted-foreground">
@@ -202,11 +202,11 @@ export const LeadFormModal = ({ open, onOpenChange }: LeadFormModalProps) => {
             🎭 DIAGNÓSTICO DIGITAL GRÁTIS!
           </DialogTitle>
           <p className="text-muted-foreground text-sm mt-2">
-            Descubra se seu negócio está preparado para o Carnaval e ganhe um site grátis em até 3 dias
+            Descubra se seu negócio está preparado para crescer com nosso diagnóstico gratuito
           </p>
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 mt-3">
             <p className="text-xs text-muted-foreground text-center leading-relaxed">
-              💡 <strong>Importante:</strong> O Instagram profissional, Facebook profissional e as informações da empresa serão usados para construir e personalizar seu site grátis em até 3 dias!
+              💡 <strong>Importante:</strong> O Instagram, Facebook e as informações da empresa nos ajudam a personalizar sua análise e o plano de ação.
             </p>
           </div>
         </DialogHeader>
@@ -268,7 +268,7 @@ export const LeadFormModal = ({ open, onOpenChange }: LeadFormModalProps) => {
               className="bg-background border-border focus:ring-primary"
             />
             <p className="text-xs text-muted-foreground">
-              Essas informações serão usadas para construir seu site grátis
+              Essas informações ajudam a personalizar seu diagnóstico
             </p>
           </div>
 
@@ -405,7 +405,7 @@ export const LeadFormModal = ({ open, onOpenChange }: LeadFormModalProps) => {
             ) : (
               <>
                 <Sparkles className="w-5 h-5 mr-2" />
-                QUERO MEU DIAGNÓSTICO + SITE GRÁTIS
+                QUERO MEU DIAGNÓSTICO GRÁTIS
               </>
             )}
           </Button>

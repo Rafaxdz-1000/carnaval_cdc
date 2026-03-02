@@ -10,12 +10,12 @@ export const UrgencyBanner = () => {
   });
 
   useEffect(() => {
-    // Set carnival date to February 14, 2026
-    const carnivalDate = new Date(2026, 1, 14); // Month is 0-indexed, so 1 = February
+    // Data limite para envio: 01 de junho de 2026
+    const deadlineDate = new Date(2026, 5, 1); // Month is 0-indexed, so 5 = June
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance = carnivalDate.getTime() - now;
+      const distance = deadlineDate.getTime() - now;
 
       setTimeLeft({
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -33,7 +33,7 @@ export const UrgencyBanner = () => {
       <div className="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm md:text-base font-medium">
         <div className="flex items-center gap-1.5 sm:gap-2">
           <Zap className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse flex-shrink-0" />
-          <span className="font-bold text-center sm:text-left">O Carnaval está chegando!</span>
+          <span className="font-bold text-center sm:text-left">Prazo limitado! Envio até 01 de junho de 2026</span>
         </div>
         
         <div className="flex items-center gap-1.5 sm:gap-2">

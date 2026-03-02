@@ -30,7 +30,7 @@ export const Footer = () => {
               Feito no Brasil.
             </p>
             <p className="text-[9px] sm:text-[10px] opacity-40 mt-2 max-w-md mx-auto">
-              * O site oferecido é uma única landing page. Esta oferta é válida apenas durante o período da campanha do Carnaval.
+              * O prazo para envio é 01 de junho de 2026.
             </p>
           </div>
 
